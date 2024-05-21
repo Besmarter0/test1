@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TV Portal Landing Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body{
+      scroll-behavior: smooth;
+    }
+    /* Custom styles for wave animation */
+     .wave {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.svgrepo.com/show/20195/wave.svg') repeat-x;
+      animation: wave 10s linear infinite;
+    }
+/*
+    .wave:nth-child(2) {
+      animation: wave 18s linear infinite;
+      opacity: 0.5;
+      bottom: 10px;
+    }
+
+    @keyframes wave {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    } */
+
+
+    .plan-card {
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .popular {
+      border: 2px solid #ffd700;
+      position: relative;
+    }
+
+    .popular::before {
+      content: 'Popular';
+      position: absolute;
+      top: -1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ffd700;
+      color: black;
+      padding: 0.25rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+  <!-- Header Section -->
+  <nav class="bg-gray-900 p-1 fixed top-0 w-full z-50 flex justify-between items-center">
+    <div class="text-3xl font-bold flex items-center">
+      <!-- <i class="fas fa-tv mr-2"></i> -->
+      <span class="mx-24 flex item-center"><img class=" rounded-full" src="./images/Designer.png" alt="IPTV Portal" width="80px" height="80px" /></span>
+    </div>
+    <ul class="hidden md:flex space-x-6">
+      <li><a href="#hero" class="hover:text-blue-400 transition duration-300"><i class="fas fa-home mr-1"></i>Home</a></li>
+      <li><a href="#content" class="hover:text-blue-400 transition duration-300"><i class="fas fa-film mr-1"></i>Content</a></li>
+      <li><a href="#channels" class="hover:text-blue-400 transition duration-300"><i class="fas fa-tv mr-1"></i>Channels</a></li>
+      <li><a href="#iptv" class="hover:text-blue-400 transition duration-300"><i class="fas fa-wifi mr-1"></i>IPTV</a></li>
+      <li><a href="#plans" class="hover:text-blue-400 transition duration-300"><i class="fas fa-tags mr-1"></i>Plans</a></li>
+      <li><a href="#contact" class="hover:text-blue-400 transition duration-300"><i class="fas fa-envelope mr-1"></i>Contact</a></li>
+    </ul>
+    <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+      <i class="fas fa-bars text-2xl"></i>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden bg-gray-800 p-6 fixed top-16 w-full z-50">
+    <ul class="flex flex-col space-y-6">
+      <li><a href="#hero" class="hover:text-blue-400 transition duration-300"><i class="fas fa-home mr-1"></i>Home</a></li>
+      <li><a href="#content" class="hover:text-blue-400 transition duration-300"><i class="fas fa-film mr-1"></i>Content</a></li>
+      <li><a href="#channels" class="hover:text-blue-400 transition duration-300"><i class="fas fa-tv mr-1"></i>Channels</a></li>
+      <li><a href="#iptv" class="hover:text-blue-400 transition duration-300"><i class="fas fa-wifi mr-1"></i>IPTV</a></li>
+      <li><a href="#plans" class="hover:text-blue-400 transition duration-300"><i class="fas fa-tags mr-1"></i>Plans</a></li>
+      <li><a href="#contact" class="hover:text-blue-400 transition duration-300"><i class="fas fa-envelope mr-1"></i>Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="hero" class="h-screen flex bg-gray-800 flex-col items-center justify-center relative">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="wave absolute inset-x-0 bottom-0 h-1/2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#111827" fill-opacity="1" d="M0,256L17.1,256C34.3,256,69,256,103,218.7C137.1,181,171,107,206,85.3C240,64,274,96,309,117.3C342.9,139,377,149,411,160C445.7,171,480,181,514,192C548.6,203,583,213,617,208C651.4,203,686,181,720,181.3C754.3,181,789,203,823,224C857.1,245,891,267,926,245.3C960,224,994,160,1029,144C1062.9,128,1097,160,1131,154.7C1165.7,149,1200,107,1234,117.3C1268.6,128,1303,192,1337,208C1371.4,224,1406,192,1423,176L1440,160L1440,0L1422.9,0C1405.7,0,1371,0,1337,0C1302.9,0,1269,0,1234,0C1200,0,1166,0,1131,0C1097.1,0,1063,0,1029,0C994.3,0,960,0,926,0C891.4,0,857,0,823,0C788.6,0,754,0,720,0C685.7,0,651,0,617,0C582.9,0,549,0,514,0C480,0,446,0,411,0C377.1,0,343,0,309,0C274.3,0,240,0,206,0C171.4,0,137,0,103,0C68.6,0,34,0,17,0L0,0Z"></path></svg>
+      </div>
+    </div>
+    <div class="text-center relative z-10">
+      <h1 class="text-5xl font-bold mb-4">Welcome to Stream Flix</h1>
+      <p class="text-xl mb-6">Your one-stop destination for the best TV content Ever.</p>
+      <a href="#content" class="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300">Explore Now</a>
+    </div>
+  </section>
+
+  <!-- TV Content Section -->
+  <section id="content" class="py-32 bg-gray-900">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold mb-12 text-center">Popular TV  <i class="fas fa-tv mr-2"></i></h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div class="bg-gray-800 rounded-lg shadow-md p-6 card">
+          <img src="./images/mobile.jpg" alt="Show 1" class="w-full h-48 object-cover mb-4 rounded-lg">
+          <h3 class="text-2xl font-bold mb-2">Easy Access</h3>
+          <p class="text-gray-400">Eeasy to Use and more Freindly From small Platforms Either</p>
+        </div>
+        <div class="bg-gray-800 rounded-lg shadow-md p-6 card">
+          <img src="./images/global.jpg" alt="Show 2" class="w-full h-48 object-cover mb-4 rounded-lg">
+          <h3 class="text-2xl font-bold mb-2">Most Popular Things</h3>
+          <p class="text-gray-400">You don't haveto buy every Single App Alone all things Already There.
+          </p>
+        </div>
+        <div class="bg-gray-800 rounded-lg shadow-md p-6 card">
+          <img src="./images/updated.jpg" alt="Show 3" class="w-full h-48 object-cover mb-4 rounded-lg">
+          <h3 class="text-2xl font-bold mb-2">Stay Updated</h3>
+          <p class="text-gray-400">We are  handling all udpated and informed and Full Support 24/7</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Channels Section -->
+  <section id="channels" class="py-20 bg-gray-800">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold mb-12 text-center">Available Channels</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div class="bg-gray-900 rounded-lg shadow-md p-6 text-center card">
+          <h3 class="text-2xl font-bold mb-4">Channel 1</h3>
+          <p class="text-gray-400">Description of Channel 1...</p>
+        </div>
+        <div class="bg-gray-900 rounded-lg shadow-md p-6 text-center card">
+          <h3 class="text-2xl font-bold mb-4">Channel 2</h3>
+          <p class="text-gray-400">Description of Channel 2...</p>
+        </div>
+        <div class="bg-gray-900 rounded-lg shadow-md p-6 text-center card">
+          <h3 class="text-2xl font-bold mb-4">Channel 3</h3>
+          <p class="text-gray-400">Description of Channel 3...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IPTV Section -->
+  <section id="iptv" class="py-20 bg-gray-900">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold mb-12 text-center">IPTV Services</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div class="bg-gray-800 rounded-lg shadow-md p-6 text-center card">
+          <i class="fas fa-wifi text-6xl text-blue-500 mb-4"></i>
+          <h3 class="text-2xl font-bold mb-2">Service 1</h3>
+          <p class="text-gray-400">Description of IPTV Service 1...</p>
+        </div>
+        <div class="bg-gray-800 rounded-lg shadow-md p-6 text-center card">
+          <i class="fas fa-wifi text-6xl text-blue-500 mb-4"></i>
+          <h3 class="text-2xl font-bold mb-2">Service 2</h3>
+          <p class="text-gray-400">Description of IPTV Service 2...</p>
+        </div>
+        <div class="bg-gray-800 rounded-lg shadow-md p-6 text-center card">
+          <i class="fas fa-wifi text-6xl text-blue-500 mb-4"></i>
+          <h3 class="text-2xl font-bold mb-2">Service 3</h3>
+          <p class="text-gray-400">Description of IPTV Service 3...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- Plans Section -->
+ <section id="plans" class="py-20 bg-gray-800">
+  <div class="container mx-auto">
+    <h2 class="text-4xl font-bold mb-12 text-center">Subscription Plans</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div class="bg-gray-900 rounded-lg shadow-md p-6 text-center plan-card">
+        <h3 class="text-2xl font-bold mb-4">Basic Plan</h3>
+        <p class="text-4xl font-bold mb-4">$9.99</p>
+        <p class="text-gray-400 mb-4">3 Month</p>
+        <p class="text-gray-400 mb-4">Description of the basic plan...</p>
+        <button onclick="sendWhatsAppMessage('Basic Plan', '$9.99')" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300">Subscribe</button>
+      </div>
+      <div class="bg-gray-900 rounded-lg shadow-md p-6 text-center plan-card popular">
+        <h3 class="text-2xl font-bold mb-4">Standard Plan</h3>
+        <p class="text-4xl font-bold mb-4">$19.99</p>
+        <p class="text-gray-400 mb-4">6 Month</p>
+        <p class="text-gray-400 mb-4">Description of the standard plan...</p>
+        <button onclick="sendWhatsAppMessage('Standard Plan', '$19.99')" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300">Subscribe</button>
+      </div>
+      <div class="bg-gray-900 rounded-lg shadow-md p-6 text-center plan-card">
+        <h3 class="text-2xl font-bold mb-4">Premium Plan</h3>
+        <p class="text-4xl font-bold mb-4">$29.99</p>
+        <p class="text-gray-400 mb-4">12 Month</p>
+        <p class="text-gray-400 mb-4">Description of the premium plan...</p>
+        <button onclick="sendWhatsAppMessage('Premium Plan', '$29.99')" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ <!-- Contact Section -->
+ <section id="contact" class="py-20 bg-gray-900">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold mb-12 text-center">Contact Us</h2>
+      <div class="max-w-lg mx-auto">
+        <form id="contact-form" class="bg-gray-800 rounded-lg shadow-md p-6">
+          <div class="mb-4">
+            <label for="name" class="block text-sm font-bold mb-2">Name</label>
+            <input type="text" id="name" class="w-full p-3 rounded bg-gray-700 text-white focus:outline-none focus:shadow-outline" required>
+          </div>
+          <div class="mb-4">
+            <label for="email" class="block text-sm font-bold mb-2">Email</label>
+            <input type="email" id="email" class="w-full p-3 rounded bg-gray-700 text-white focus:outline-none focus:shadow-outline" required>
+          </div>
+          <div class="mb-4">
+            <label for="message" class="block text-sm font-bold mb-2">Message</label>
+            <textarea id="message" class="w-full p-3 rounded bg-gray-700 text-white focus:outline-none focus:shadow-outline" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 send-whatsapp-contact">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="bg-gray-900 py-6 text-center">
+    <p class="text-gray-400">&copy; 2024 TV Portal. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+
+    function sendWhatsAppMessage(plan, price) {
+      const message = `I'm%20interested%20in%20the%20${plan}%20which%20costs%20${price}.%20Please%20provide%20more%20details.`;
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/message/G7MIDEMUGXLOG1?text=${encodedMessage}`;
+    //   https://wa.me/message/G7MIDEMUGXLOG1
+      window.open(whatsappUrl, '_blank');
+    }
+
+  
+    // Send WhatsApp message for contact form
+    document.querySelector('.send-whatsapp-contact').addEventListener('click', function(event) {
+      event.preventDefault();
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var message = document.getElementById('message').value;
+      var whatsappMessage = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+      window.open(`https://api.whatsapp.com/send?phone=YOUR_WHATSAPP_NUMBER&text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+    });
+  </script>
+  </script>
+</body>
+</html>
