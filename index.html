@@ -81,23 +81,33 @@
       font-weight: bold;
     }
 
-    /* Add this CSS to your stylesheet */
-.card {
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    }
 
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
+    .cta-button {
+      background-color: #3b82f6;
+      color: #ffffff;
+      padding: 1rem 2rem;
+      border-radius: 9999px;
+      transition: background-color 0.3s;
+    }
 
-.card img {
-  transition: transform 0.3s;
-}
+    .cta-button:hover {
+      background-color: #2563eb;
+    }
 
-.card:hover img {
-  transform: scale(1.1);
-}
+    h2 {
+      color: #ffffff;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: #b0b0b0;
+    }
+
   </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -237,35 +247,37 @@
     </div>
   </section>
 
+
+
  <!-- Plans Section -->
- <section id="plans" class="py-20 bg-gray-800">
-  <div class="container mx-auto">
-    <h2 class="text-4xl font-bold mb-12 text-center">Subscription Plans</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-      <div class="bg-gray-900 rounded-lg shadow-md p-6 text-center plan-card">
-        <h3 class="text-2xl font-bold mb-4">Basic Plan</h3>
-        <p class="text-4xl font-bold mb-4">$9.99</p>
-        <p class="text-gray-400 mb-4">3 Month</p>
-        <p class="text-gray-400 mb-4">Description of the basic plan...</p>
-        <button onclick="sendWhatsAppMessage('Basic Plan', '$9.99')" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300">Subscribe</button>
-      </div>
-      <div class="bg-gray-900 rounded-lg shadow-md p-6 text-center plan-card popular">
-        <h3 class="text-2xl font-bold mb-4">Standard Plan</h3>
-        <p class="text-4xl font-bold mb-4">$19.99</p>
-        <p class="text-gray-400 mb-4">6 Month</p>
-        <p class="text-gray-400 mb-4">Description of the standard plan...</p>
-        <button onclick="sendWhatsAppMessage('Standard Plan', '$19.99')" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300">Subscribe</button>
-      </div>
-      <div class="bg-gray-900 rounded-lg shadow-md p-6 text-center plan-card">
-        <h3 class="text-2xl font-bold mb-4">Premium Plan</h3>
-        <p class="text-4xl font-bold mb-4">$29.99</p>
-        <p class="text-gray-400 mb-4">12 Month</p>
-        <p class="text-gray-400 mb-4">Description of the premium plan...</p>
-        <button onclick="sendWhatsAppMessage('Premium Plan', '$29.99')" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300">Subscribe</button>
+  <section id="plans" class="py-20 bg-gray-800">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold mb-12 text-center">Subscription Plans</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div class="bg-gray-900 rounded-lg shadow-md p-6 text-center card">
+          <h3 class="text-2xl font-bold mb-4">Basic Plan</h3>
+          <p class="text-4xl font-bold mb-4">$9.99</p>
+          <p class="text-gray-400 mb-4">3 Month</p>
+          <p class="text-gray-400 mb-4">Description of the basic plan...</p>
+          <button onclick="sendWhatsAppMessage('Basic Plan', '$9.99')" class="cta-button">Subscribe</button>
+        </div>
+        <div class="bg-gray-900 rounded-lg shadow-md p-6 text-center card border-2 border-yellow-500">
+          <h3 class="text-2xl font-bold mb-4">Standard Plan</h3>
+          <p class="text-4xl font-bold mb-4">$19.99</p>
+          <p class="text-gray-400 mb-4">6 Month</p>
+          <p class="text-gray-400 mb-4">Description of the standard plan...</p>
+          <button onclick="sendWhatsAppMessage('Standard Plan', '$19.99')" class="cta-button">Subscribe</button>
+        </div>
+        <div class="bg-gray-900 rounded-lg shadow-md p-6 text-center card">
+          <h3 class="text-2xl font-bold mb-4">Premium Plan</h3>
+          <p class="text-4xl font-bold mb-4">$29.99</p>
+          <p class="text-gray-400 mb-4">12 Month</p>
+          <p class="text-gray-400 mb-4">Description of the premium plan...</p>
+          <button onclick="sendWhatsAppMessage('Premium Plan', '$29.99')" class="cta-button">Subscribe</button>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
  <!-- Contact Section -->
@@ -304,9 +316,28 @@
           document.getElementById('mobile-menu').classList.toggle('hidden');
         });
 
+     // Show the pop-up after 10 seconds
+    setTimeout(() => {
+      document.getElementById('popup-modal').classList.remove('hidden');
+    }, 10000);
+
+    // Function to close the pop-up
+    function closePopup() {
+      document.getElementById('popup-modal').classList.add('hidden');
+    }
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth',
+        });
+      });
+    });
 
         function sendWhatsAppMessage(plan, price) {
-          const message = `I'm%20interested%20in%20the%20${plan}%20which%20costs%20${price}.%20Please%20provide%20more%20details.`;
+          const message = `I'm%20interested%20in%20the%20${plan}%20which%20costs%20${price} \n.%20Please%20provide%20more%20details.`;
           const encodedMessage = encodeURIComponent(message);
           const whatsappUrl = `https://wa.me/message/G7MIDEMUGXLOG1?text=${encodedMessage}`;
         //   https://wa.me/message/G7MIDEMUGXLOG1
